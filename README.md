@@ -40,4 +40,7 @@ requeridas, y otra para el manejo del usuario, roles y permisos.
 
 Se creo un controller solo para las consultas de los pokemons
 
-y el la carpeta Config, se encuantra el archivo Security config, con el cual se configuro la denegacion a usuario no registrados en la aplicacion(no se encripto la contraseña para fines de pruebas).
+![image](https://github.com/user-attachments/assets/6a030774-4157-41e2-a9ae-86bd920a6a64)
+
+
+y el la carpeta Config, se encuentra el archivo Security config, con el cual se configuro la denegacion a usuario no registrados en la aplicacion(no se encripto la contraseña para fines de pruebas).
