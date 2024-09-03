@@ -17,10 +17,15 @@ En Postgre o la base de datos que se utilice, (se puede cambiar su configuracion
 se creo una base de datos llamada pokeapi, donde se dejo configurada para que se crearan y borrar los datos cada vez que se inicie o detenga la aplicacion.
 
 spring.jpa.hibernate.ddl-auto=create-drop
+
 spring.jpa.hibernate.show-sql=true
+
 spring.datasource.url=jdbc:postgresql://localhost:5432/pokeapi
+
 spring.datasource.username= postgres
+
 spring.datasource.password= root
+
 spring.jpa.show-sql= true
 
 ![image](https://github.com/user-attachments/assets/379c7c2f-02d3-49a2-a98c-b03fc70e2702)
