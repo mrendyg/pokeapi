@@ -8,6 +8,8 @@ import lombok.Setter;
 @Setter
 public class MoveDTO {
 
+    //Se creo el MoveDTO para traer a la vista el power de cada movimento para filtrar los 3 mas poderosos
+
     @JsonProperty("name")
     private String moveName;
 

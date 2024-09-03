@@ -20,6 +20,8 @@ public class PokeapiApplication {
 		SpringApplication.run(PokeapiApplication.class, args);
 	}
 
+
+	//Insersiones en la base de datos para uso de pruebas con spring security
 	@Bean
 	CommandLineRunner init(UserRepository userRepository){
 		return args -> {

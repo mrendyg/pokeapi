@@ -21,29 +21,34 @@ public class PokemonController {
     @Autowired
     private final RestTemplate restTemplate;
 
-
+    //Inyeccion de instancia
     public PokemonController(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
+
+    //Get para traer la informacion de un pokemon en especifico
     @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public PokemonEntity getPokemon(@PathVariable Long id) {
         String url = "https://pokeapi.co/api/v2/pokemon/" + id;
         PokemonEntity pokemon = restTemplate.getForObject(url, PokemonEntity.class);
 
+        // Filtrar las estadísticas para incluir solo ataque y defensa
         if (pokemon != null) {
-            // Filtrar las estadísticas para incluir solo ataque y defensa
+
             List<Stat> filteredStats = pokemon.getStats().stream()
                     .filter(stat -> "attack".equalsIgnoreCase(stat.getStat().getName()) ||
                             "defense".equalsIgnoreCase(stat.getStat().getName()))
-                    .toList(); // Usar .toList() para obtener la lista filtrada
+                    .toList();
             pokemon.setStats(filteredStats);
 
             // Obtener y filtrar los movimientos por power
             List<Move> moves = pokemon.getMoves();
             List<Move> movesWithPower = new ArrayList<>();
 
-            // Consultar la API para obtener el valor de power de cada movimiento
+            /* Consultar la API para obtener el valor de power de cada movimiento,
+               Esto generera demora en la repuesta*/
             for (Move move : moves) {
                 String moveUrl = move.getMove().getUrl();
                 MoveDetails moveDetails = restTemplate.getForObject(moveUrl, MoveDetails.class);
@@ -60,7 +65,7 @@ public class PokemonController {
                     .limit(3)
                     .collect(Collectors.toList());
 
-            // Reemplazar la lista de movimientos en el Pokémon con los movimientos filtrados
+            // Reemplazar la lista de movimientos en el Pokémon con los 3 mas potentes
             pokemon.setMoves(topMoves);
         }
 
@@ -70,9 +75,12 @@ public class PokemonController {
 
 
 
+    //Get para filtrar por pokemones de cada generacion
     @GetMapping("/generation/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public Page<PokemonSpeciesEntity> getPokemonByGeneration(
             @PathVariable Long id,
+            //paginamos para que nos aparescan solo 10 pokemones por cada pagina, es nuevo para mi aun
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
 
@@ -82,6 +90,7 @@ public class PokemonController {
         if (response == null || response.getPokemon_species() == null) {
             return Page.empty();
         }
+
 
         List<PokemonSpeciesEntity> allPokemonSpecies = response.getPokemon_species();
         Pageable pageable = PageRequest.of(page, size);
