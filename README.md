@@ -33,7 +33,7 @@ spring.jpa.show-sql= true
 
 En PokeapiApplication podran encontrar la creacion del usuario, los roles y permisos (los cuales pide Spring Security).
 
-Las entidates utilizadas se encuantran guardadas en 2 carpertas, dentro de la carpeta persitence, una es para la manejo de la informacion de los pokemons, y las solicutudes
+Las entidates utilizadas se encuentran guardadas en 2 carpertas, dentro de la carpeta persitence, una es para la manejo de la informacion de los pokemons, y las solicutudes
 requeridas, y otra para el manejo del usuario, roles y permisos.
 
 ![image](https://github.com/user-attachments/assets/0b9ff44d-6fbe-4cc1-885b-3143ae88af5d)
