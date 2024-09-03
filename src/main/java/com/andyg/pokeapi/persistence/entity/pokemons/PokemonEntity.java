@@ -1,11 +1,9 @@
-package com.andyg.pokeapi.persistence.entity;
+package com.andyg.pokeapi.persistence.entity.pokemons;
 
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.io.Serializable;
 import java.util.List;
-import java.util.function.Function;
 
 @Getter
 @Setter

@@ -1,4 +1,4 @@
-package com.andyg.pokeapi.persistence.entity;
+package com.andyg.pokeapi.persistence.entity.pokemons;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.ManyToOne;

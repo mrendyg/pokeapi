@@ -1,7 +1,8 @@
 package com.andyg.pokeapi.controller;
 
-import com.andyg.pokeapi.persistence.entity.*;
+import com.andyg.pokeapi.persistence.entity.pokemons.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.data.domain.*;
@@ -10,11 +11,11 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-import com.andyg.pokeapi.persistence.entity.PokemonEntity;
 
 
 @RestController
 @RequestMapping("/api/pokemon")
+@ResponseStatus(HttpStatus.OK)
 public class PokemonController {
 
     @Autowired
@@ -65,6 +66,8 @@ public class PokemonController {
 
         return pokemon;
     }
+
+
 
 
     @GetMapping("/generation/{id}")
